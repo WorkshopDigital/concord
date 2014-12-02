@@ -1,7 +1,11 @@
 Concord
 =======
 
+MOZ Page Authority and External Link Equity tool for Google Spreadsheets.
 
-MOZ Page Authority and Link Equity Google Spreadsheet Script. 
-To use this script place your fully qualified URLs in the first column of your spreadsheet. 
-Fill out the variables below with your own information and run the script from the spreadsheet's menu. 
+## To use this script:
+
+	1. Add this script to your spreadsheet using Tools -> Script Editor menu. 
+	2. Fill out the options at the top of the script file.	
+	3. Include fully qualified URLs in the first column of your spreadsheet. 
+	4. Run the script from the menu. :)
