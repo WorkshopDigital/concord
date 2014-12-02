@@ -19,6 +19,12 @@
 
 
 
+/*********************************************
+ *                                           *
+ * You need to fill out the varaibles below. *
+ *                                           *
+ *********************************************/
+
     /** 
      * Your MOZ Access ID Number. For more information about who to get credentials visit {@link https://moz.com/products/api/keys}.
      * @type {string} 
@@ -32,23 +38,11 @@ var accessId    = '',
     secret      = 'your-secret',
 
     /** 
-     * MOZ API endpoint
-     * @type {string}  
-     */    
-    apiBase     = 'https://lsapi.seomoz.com/linkscape/',
-
-    /** 
      * The number of rows the script should skip from the top. 
      * This allows you to set headers and sheet titles. 
      * @type {number} 
      */        
     rowOffset   = 3,
-
-    /** 
-     * We'll use this later to hold data.
-     * @type {array}  
-     */
-    requestURLs = [],     
 
     /** 
      * The column where you would like to write your page authority data. 
@@ -60,7 +54,28 @@ var accessId    = '',
      * The column where you would like to write your link equity data.
      * @type {string}  
      */
-    externalEquityLinksColumn = '';    
+    externalEquityLinksColumn = '';  
+
+
+
+/***********************************************
+ *                                             *
+ * Stop! No need to touch anything below here. *
+ *                                             *
+ ***********************************************/    
+
+
+    /** 
+     * MOZ API endpoint
+     * @type {string}  
+     */    
+var apiBase     = 'https://lsapi.seomoz.com/linkscape/',  
+
+    /** 
+     * We'll use this later to hold data.
+     * @type {array}  
+     */
+    requestURLs = [];  
 
 
 /**
