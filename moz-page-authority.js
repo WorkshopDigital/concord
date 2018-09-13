@@ -49,12 +49,14 @@ var accessId    = '',
      * @type {string} 
      */
     pageAuthorityColumn       = '',
+    domainAuthorityColumn       = '',
 
     /** 
      * The column where you would like to write your link equity data.
      * @type {string}  
      */
-    externalEquityLinksColumn = '';  
+    externalEquityLinksColumn = '',  
+    externalDomainLinksColumn = '';
 
 
 
@@ -125,7 +127,7 @@ function mozRequest() {
    * The sum of the MOZ Page Authority & External Equity Links bitwise identifiers.
    * @type {number}  
    */
-  bitFlags = (34359738368 + 32);
+  bitFlags = (34359738368+32+68719476736+1024);
 
   /** 
    * Our completed URL including authentication. 
@@ -168,7 +170,9 @@ function mozRequest() {
     /** Parse the JSON reponse from MOZ and add the values back to the request object. */
     Utilities.jsonParse(response.getContentText()).forEach(function(result, index) {
       request[index]['pageAuthorityValue'] = result.upa;
+      request[index]['domainAuthorityValue'] = result.pda;
       request[index]['externalEquityLinksValue'] = result.ueid;
+      request[index]['externalDomainLinksValue'] = result.uipl;
     });    
     
     /** 
@@ -222,7 +226,9 @@ function writeRows(data) {
 
     /** Write the data. */
     doc.getRange(row.pageAuthorityCell).setValue(row.pageAuthorityValue);
+    doc.getRange(row.domainAuthorityCell).setValue(row.domainAuthorityValue);
     doc.getRange(row.externalEquityLinksCell).setValue(row.externalEquityLinksValue);
+    doc.getRange(row.externalDomainLinksCell).setValue(row.externalDomainLinksValue);
   });
 }
 
@@ -263,9 +269,13 @@ function readRows() {
     this.requestURLs.push({
       'url': row[0],
       'pageAuthorityCell': this.pageAuthorityColumn+rowNumber,
-      'externalEquityLinksCell': this.externalEquityLinksColumn+rowNumber,      
+      'domainAuthorityCell': this.domainAuthorityColumn+rowNumber,
+      'externalEquityLinksCell': this.externalEquityLinksColumn+rowNumber,
+      'externalDomainLinksCell': this.externalDomainLinksColumn+rowNumber,      
       'pageAuthorityValue': null,
-      'externalEquityLinksValue': null    
+      'domainAuthorityValue': null,
+      'externalEquityLinksValue': null,
+      'externalDomainLinksValue': null
     });
   }
   
